@@ -1,0 +1,42 @@
+body {
+    background-color: #333333;
+    font-family: sans-serif;
+    color: #ffffff;
+}
+
+form {
+	margin-left: 20%;
+}
+
+fieldset {
+    width: 40%;
+}
+
+label {
+    text-align: left;
+}
+
+div {
+    margin-left: 20%;
+}
+
+div.form1 {
+    margin-left: 40%;
+}
+
+div.form2 {
+    margin-left: 33.5%
+}
+
+input {
+  display: inline-block;
+  float: right;
+}
+
+p {
+    text-align: left;
+}
+
+p.register {
+    margin-left: 43%;
+}
