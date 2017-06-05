@@ -1,0 +1,38 @@
+body {
+    background-color: #333333;
+    font-family: sans-serif;
+    color: #ffffff;
+}
+
+form {
+	margin-left: 20%;
+}
+
+fieldset {
+    width: 40%;
+}
+
+label {
+    text-align: left;
+}
+
+div {
+    margin-left: 20%;
+}
+
+form {
+    margin-left: 60%;
+}
+
+input {
+  display: inline-block;
+  float: right;
+}
+
+p {
+    text-align: left;
+}
+
+p.register {
+    margin-left: 43%;
+}

@@ -8,37 +8,37 @@ import javax.persistence.*;
 @Table(name = "atmospheric_data", catalog = "world")
 public class AtmosphericData {
 
-    private String hour;
     private int id;
+    private City city;
     private int temperature;
-    private int pressure;
     private int humidity;
     private int airVelocity;
-    private int date;
-    private Boolean prognosis;
+    private String hour;
+    private int month;
+    private int day;
 
-    AtmosphericData(String hour, int id, int temperature, int pressure, int humidity, int airVelocity) {
-        this.hour = hour;
-        this.id = id;
+    public AtmosphericData() {}
+
+    public AtmosphericData(City city, int temperature, int humidity, int airVelocity, String hour, int month, int day) {
+        this.city = city;
         this.temperature = temperature;
-        this.pressure = pressure;
         this.humidity = humidity;
         this.airVelocity = airVelocity;
+        this.hour = hour;
+        this.month = month;
+        this.day = day;
     }
 
-    AtmosphericData(String hour, int id, int temperature, int pressure, int humidity, int airVelocity, Boolean prognosis) {
-        this.hour = hour;
-        this.id = id;
+    public AtmosphericData(String city, int temperature, int humidity, int airVelocity, String hour, int month, int day) {
+        this.city = new City(city);
         this.temperature = temperature;
-        this.pressure = pressure;
         this.humidity = humidity;
         this.airVelocity = airVelocity;
-        this.prognosis = prognosis;
-    }
+        this.hour = hour;
+        this.month = month;
+        this.day = day;    }
 
     @Id
-    @GenericGenerator(name="idGenerator" , strategy="increment")
-    @GeneratedValue(generator="idGenerator")
     @Column(name = "id", unique = true, nullable = false)
     public int getId() {
         return id;
@@ -48,17 +48,17 @@ public class AtmosphericData {
         this.id = id;
     }
 
-
-    @Column(name = "hour", nullable = false, length = 10)
-    public String getHour() {
-        return hour;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "city")
+    public City getCity() {
+        return this.city;
     }
 
-    public void setHour(String hour) {
-        this.hour = hour;
+    public void setCity(City city) {
+        this.city = city;
     }
 
-    @Column(name = "temperature", nullable = false, length = 10)
+    @Column(name = "temperature", nullable = false)
     public int getTemperature() {
         return temperature;
     }
@@ -67,7 +67,7 @@ public class AtmosphericData {
         this.temperature = temperature;
     }
 
-    @Column(name = "humidity", nullable = false, length = 10)
+    @Column(name = "humidity", nullable = false)
     public int getHumidity() {
         return humidity;
     }
@@ -76,16 +76,7 @@ public class AtmosphericData {
         this.humidity = humidity;
     }
 
-    @Column(name = "pressure", nullable = false, length = 10)
-    public int getPressure() {
-        return pressure;
-    }
-
-    public void setPressure(int pressure) {
-        this.pressure = pressure;
-    }
-
-    @Column(name = "airvelocity", nullable = false, length = 10)
+    @Column(name = "air_velocity", nullable = false, length = 5)
     public int getAirVelocity() {
         return airVelocity;
     }
@@ -94,21 +85,30 @@ public class AtmosphericData {
         this.airVelocity = airVelocity;
     }
 
-    @Column(name = "date", nullable = false, length = 45)
-    public int getDate() {
-        return date;
+    @Column(name = "hour", nullable = false, length = 5)
+    public String getHour() {
+        return hour;
     }
 
-    public void setDate(int atmosphericData) {
-        this.date = date;
+    public void setHour(String hour) {
+        this.hour = hour;
     }
 
-    @Column(name = "prognosis", nullable = true)
-    public Boolean getPrognosis() {
-        return prognosis;
+    @Column(name = "month", nullable = false, length = 45)
+    public int getMonth() {
+        return month;
     }
 
-    public void setPrognosis(Boolean prognosis) {
-        this.prognosis = prognosis;
+    public void setMonth(int month) {
+        this.month = month;
+    }
+
+    @Column(name = "day", nullable = false, length = 45)
+    public int getDay() {
+        return day;
+    }
+
+    public void setDay(int day) {
+        this.day = day;
     }
 }

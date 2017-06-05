@@ -1,9 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
-
-<html>
-
     <head>
          <link href="<c:url value="/resources/css/error.css" />" rel="stylesheet">
+         <meta charset="utf-8">
     </head>
 
     <body>

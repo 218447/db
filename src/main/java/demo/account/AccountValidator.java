@@ -10,20 +10,20 @@ import org.springframework.validation.Validator;
 public class AccountValidator implements Validator {
 
     @Autowired
-    UserDAO userDAO;
+    AccountDAO accountDAO;
 
     @Override
     public boolean supports(Class<?> clazz) {
-        return User.class.equals(clazz);
+        return Account.class.equals(clazz);
     }
 
     @Override
     public void validate(Object obj, Errors e) {
-        User account = (User) obj;
+        Account account = (Account) obj;
 
         ValidationUtils.rejectIfEmptyOrWhitespace(e, "username", "username.required");
         ValidationUtils.rejectIfEmptyOrWhitespace(e, "password", "password.required");
-        User checker = userDAO.findByUsername(account.getUsername());
+        Account checker = accountDAO.findByUsername(account.getUsername());
 
         if (checker != null) {
             e.rejectValue("username", "username.exists");
